@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;1,500&display=swap");
+
+      @mixin mQ($rem) {
+        @media screen and (min-width: $rem) {
+          @content;
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      section {
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        min-height: 40rem;
+        background: url("https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+          no-repeat 50% 50% / cover;
+        color: #fff;
+        padding-block: min(10vh, 3rem);
+
+        .container {
+          width: calc(min(90rem, 90%));
+          margin-inline: auto;
+
+          @include mQ(41.25rem) {
+            height: 100svh;
+            height: 100vh;
+          }
+
+          @media screen and (max-height: 700px) {
+            height: auto;
+          }
+        }
+
+        .items {
+          place-content: center;
+          place-items: center;
+          grid-auto-columns: 1fr;
+          height: inherit;
+
+          @include mQ(41.25rem) {
+            display: grid;
+            grid-template-areas: "heading heading heading heading" "box-1 box-1 transparent transparent" "box-3 box-4 box-5 box-6" "input input input input";
+          }
+
+          @include mQ(61.875rem) {
+            grid-template-areas: "heading box-1 transparent ." "box-3 box-4 box-5 box-6" "input input input input";
+          }
+        }
+
+        h2 {
+          text-transform: capitalize;
+          grid-area: heading;
+          text-align: left;
+          width: 100%;
+          padding: 0 1.25rem 1.25rem 0;
+          font-size: clamp(1.5625rem, 1.1731rem + 1.6615vw, 3.25rem);
+          letter-spacing: 0.031rem;
+        }
+        .box {
+          width: 100%;
+          height: calc(10rem + 5vw);
+          background: #537052;
+          display: flex;
+          align-items: center;
+          border: 0.125rem solid #537052;
+
+          > span {
+            padding: 20px;
+            font-size: clamp(0.9rem, 0.72rem + 0.768vw, 1.2rem);
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .items > div:nth-of-type(1) {
+          display: none;
+          grid-area: box-1;
+
+          @include mQ(41.25rem) {
+            display: block;
+          }
+        }
+        .items > div:nth-of-type(2) {
+          display: none;
+          background: transparent;
+          grid-area: transparent;
+          border-bottom: 0;
+
+          @include mQ(41.25rem) {
+            display: block;
+          }
+        }
+        .items > div:nth-of-type(3) {
+          grid-area: box-3;
+        }
+        .items > div:nth-of-type(4) {
+          grid-area: box-4;
+        }
+        .items > div:nth-of-type(5) {
+          grid-area: box-5;
+        }
+        .items > div:nth-of-type(6) {
+          grid-area: box-6;
+        }
+        .email-input {
+          grid-area: input;
+          width: 100%;
+          position: relative;
+          margin-top: 2.5rem;
+
+          @include mQ(41.25rem) {
+            max-width: 45%;
+          }
+
+          > div {
+            position: absolute;
+            right: 1.25rem;
+            top: 0.75rem;
+          }
+          img {
+            width: 1.563rem;
+            -webkit-filter: invert(100%);
+            filter: invert(100%);
+          }
+        }
+        input {
+          width: 100%;
+          padding-left: 1.563rem;
+          border: none;
+          background: rgba(255, 255, 255, 0.14);
+          box-shadow: 0 0.25rem 1.875rem rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(0.125rem);
+          -webkit-backdrop-filter: blur(0.125rem);
+          border: 0.063rem solid rgba(255, 255, 255, 0.3);
+          padding-block: 0.938rem;
+          border-radius: 10rem;
+          color: #fff;
+
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <div class="items">
+          <h2>join our community</h2>
+          <div class="box">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1669741908175-eb029fbc350f?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+          </div>
+          <div class="box"></div>
+          <div class="box">
+            <img
+              src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=2041&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+          </div>
+          <div class="box">
+            <span>Our community work tirelessly to make an impact</span>
+          </div>
+          <div class="box">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1682390303440-3972e3193494?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+            />
+          </div>
+          <div class="box"><span>Get updates from our newsletter</span></div>
+          <div class="email-input">
+            <input type="text" value placeholder="Enter your email" />
+            <div>
+              <img
+                src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_share-256.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
